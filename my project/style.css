@@ -1,0 +1,739 @@
+/* common style*/
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,800;1,500;1,900&display=swap');
+/*  above is font choosen from "font.google.com" where we can find more font and selecting one we get font in bold,italik and after selecting ,right hand side we have two optio to include these font in ut pages using link and impor 
+link optin font path in html tag whereas import option in css that i did here*/
+
+* {
+    margin: 0;
+padding: 0;
+box-sizing: border-box;
+text-decoration: none;/*remove underline link */
+list-style-type: none;/* removing style atoms */
+outline: none;/*border of buttons and text are removed*/
+font-family: "jura",sans-serif;
+}
+html{
+    font-size: 62.5%;/* font size of all text in html pages is 62.5%, e decreses font size 1rem=10pixel..but bydefault its 1rem=16pixel*/
+}
+.bg-page{/* postion of curser is fixec linear-gradient(rgba(0,0 ,0,0.7),rgba(0,0,0,0.7)),*/
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
+   background:  url(yello.png)center no-repeat;
+   background-size: cover;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-btn{/* this line of code is plased after creating section -2 ...its ripple button*/
+    position: absolute;
+    width: 11rem;
+    height: 11rem;
+    background-color: #7B3F00;
+    border-radius: 50%;
+    /* bottom: 3rem; */
+    left: 85rem;
+    border: 0.1rem dashed gold;
+    padding: .1rem;
+    overflow: hidden;/* when ripple mouse comes over it ...then main button should hide*/
+}
+.main-btn-content
+{
+    width: 100%;
+    height: 100%;
+    border: 0.2rem dotted yellow;
+    border-radius: 50%;
+    transform: rotate(45deg);
+    transition: transform 0.2s,border 0.2s;/*smooth operation*/
+    
+}
+.main-btn:hover .main-btn-content{
+     transform: rotate(60deg);
+    border: 0.2rem solid black;
+    transition: transform 0.2s 0.5s, border 0.2s;
+}
+.main-btn-line{
+    position: absolute;
+    top: 4rem;
+    width: 3rem;
+    height: 0.5rem;
+    border: 0.1rem solid white;
+    transition: all 0.5s;
+}
+/*to rotate line in circle created child() of .main-btn-line*/
+.main-btn-line:nth-child(1){
+    transform:rotateZ(-57deg);/*if required then used  translate function move line x cordinator -65,i don;t required here*/
+    transform-origin: left center;/* orgine of line center ,we dont want hence set origin left center*/
+    border-right: none;
+    
+}
+.main-btn-line:nth-child(2)
+{
+    transform: rotateZ(57deg);
+    transform-origin: right center;/* orgine of line center ,we dont want hence set origin left center*/
+    border-left: none;
+}
+.main-btn-line:nth-child(3)
+{
+    transform: rotateZ(90deg);
+    border-left: none;
+}
+.main-btn span
+{
+    position:absolute;
+    bottom: 3rem;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+.ripple
+{
+    position: absolute;
+    width: 0;
+    height: 0;
+    background-color:#f9e8ce;
+    border-radius:50%;
+    transform: translate(-50%,-50%);
+    animation: rippleanimation 0.5s forwards;
+}
+@keyframes rippleanimation{
+0% {
+    width:0;
+    height:0;
+}
+100% {
+    width:210%;
+    height: 210%;
+
+}
+}
+.section-heading{
+    font-size: 2rem;
+    font-weight:300;
+    text-transform: uppercase;
+    color:black;
+    position: absolute;
+    width: 0;
+    word-break: break-all;
+    transform: translateY(-50%);
+    top: 160%;
+    left: 10rem;
+    line-height: 4;
+}
+.section-3-heading{
+    font-size: 2rem;
+    font-weight:300;
+    text-transform: uppercase;
+    color:black;
+    position: absolute;
+    width: 10rem;
+  
+   left: 10rem;
+    line-height: 4;
+}
+.section-4-heading{
+    font-size: 4rem;
+    font-weight:300;
+    text-transform: uppercase;
+    color:black;
+    position: absolute;
+    width: 15rem;
+    top:40%;
+   left: 8rem;
+    line-height: 4;
+    word-break: break-all;
+    transform: translateY(-50%);
+}
+.mouse-circle,
+.mouse-dot{
+    border-radius: 50%;
+    position: fixed;
+    z-index: 500;
+    transform: translate(-50%,-50%);/*dot inside the circle*/
+     opacity:0; 
+     pointer-events: none;/* hover in main circle is set but bcoz of pinter in ccircle hover effect doesnt show,hence pointer-event is set to none.*/
+}
+
+.mouse-circle{/* created circle*/
+
+    width: 6rem;
+    height: 6rem;
+    border: 0.1rem solid gold;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 500;/*  without z-index property mouse-circle is hide inside background,if we set z-index proprty then its visible */
+  animation: mousecircleanimation 10s infinite linear;
+}
+
+@keyframes mousecircleanimation {
+    0%
+    {
+        width:6rem;
+        height: 6rem;
+    }
+    25%
+    {
+        width:8rem;
+        height: 8rem;
+    }
+    35%
+    {
+        width:4rem;
+        height: 4rem;
+    }
+    70%
+    {
+        width:8rem;
+        height: 8rem;
+    }
+    100%
+    {
+        width:6rem;
+        height: 6rem;
+    }
+}
+.mouse-dot{
+    width: .5rem;
+    height: .5rem;
+    background-color: red;
+animation:  mousedotanimation 10s infinite linear;
+
+}
+@keyframes mousedotanimation
+{
+    0%
+    {
+        width:0.5rem;
+        height:0.5rem;
+    }
+    50%
+    {
+        width:1.8rem;
+        height:1.8rem;
+    }
+   100%
+    {
+        width:.0.5rem;
+        height:0.5rem;
+    }
+}
+
+
+
+/* navigation*/
+/*menu icon*/
+.menu-icon
+{
+position: fixed;
+top: 0;
+right: 6rem;
+width: 12rem;
+height: 7rem;
+flex-direction: column;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.2s;
+}
+
+.menu-icon-line
+{
+    width: 4rem;
+    height: 0.1rem;
+    background-color:oldlace;
+    margin: 0.5rem 0;
+    box-shadow: 0 0.3rem 0.5rem black;
+}
+.show-menu-icon/* when scrolling down menu-icon show visuble hence created class*/
+{
+    opacity: 1;
+    visibility: visible;
+}
+
+/* end of menu icon*/
+.navbar
+{
+    position:fixed;
+    top: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 3rem;
+    transition: opacity 0.5s,visibility 0.5s;
+    transform: 0.5s;
+}
+.navrbar-link
+{
+    
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0 2.5rem;/* setting spacing left and right side*/
+    z-index: 100;  /*nav was hide in circle to fixed that i set z-index*/
+    text-shadow: 0 0.3rem 0.5rem black;
+}
+.hide-navbar/* without this class nav was visible when scrolling down page,we have wriitn code in javascript*/
+{
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(12rem);/* move right side of page when scroll down */
+}
+/* end of navbar*/
+/* End of navigation*/
+
+
+
+/* section 1*/
+.section-1{
+     position: relative;
+     width: 100%;
+     height: 100vh;
+    
+}
+/*logo*/
+.logo
+{
+position: absolute;/* placed top left on page so adjusting logo set top and left value*/
+top: 2rem;
+left: 5rem;
+font-size: 2rem;
+text-transform: uppercase;
+color: honeydew;
+}
+.circles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+    
+}
+.circle
+{
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    position: relative;
+    align-self: center;/*vertically align cicler in cnter*/
+    justify-self: center;/*horizontically align cicler in cnter*/
+    left: 0;
+    top: 0;
+    transition: left 2s,top 2s;/* smoothly moves circle */
+}
+.circle-1{
+    background: url("akshaj2.png") center no-repeat;
+    background-size: cover;
+    background-clip: content-box;/*border should outide of image*/
+    border: 0.5rem dotted orange;
+    margin-left: -10rem;
+
+    
+}
+.circle-2{
+    background: url("akshaj1.png") center no-repeat;
+    background-size: cover;
+    background-clip: content-box;/*border should outide of image*/
+    border: 0.7rem  dashed gold;
+    margin-right: -10rem;
+
+    
+}
+.circle-3{
+    background: url("akshaj3.png")center no-repeat;
+    background-size: cover;
+    background-clip: content-box;/*border should outide of image*/
+    border: 1rem double white;
+    margin-left: -10rem;
+
+    
+}
+.circle-4{
+    background: url("akshaj4.png")center no-repeat;
+    background-size: cover;
+    background-clip: content-box;/*border should outide of image*/
+    border: 1rem double skyblue;
+    margin-right: -10rem;
+
+    
+}
+/* animated cicle*/
+.main-circle{
+    width: 50rem;
+    height: 50rem;
+    position: absolute;
+    overflow: hidden;/* image is too big made it smaller*/
+    border-radius: 50%;
+    transition: width .2s,height 0.2s;
+}
+.main-circle:hover{ /* hover highlight the content if mouse coms over it */
+    width: 75rem;
+    height: 75rem;
+}
+.main-circle img{
+    mix-blend-mode:normal;
+    position: relative;
+    top: 0;
+    left: 0;
+    transition: left 2s,top 2s;
+}
+.sidetext{
+    font-size: 2rem;
+    color: honeydew;
+    text-transform:uppercase;
+    width: 0;
+    word-wrap: break-word;
+    line-height: 3;
+    position: sticky;/* to make element stick to top position set position :sticky and top 0*/
+    top: 0;
+}
+.sidetext-1{
+    margin: 0 auto 0 10rem ;
+    color:black;/* 0 on top ,auto on right side, 0 bottom and 10rem left side*/
+}
+.sidetext-2
+{
+    margin: 0 10rem 0 auto;
+    color:black
+}
+/* main button*/
+
+/* section-2 heading*/
+.sction-2 {
+    padding: 10rem 10rem 15rem 10rem;
+    position: relative; 
+}
+
+/* end of section-2*/
+/* about me text*/
+.about-me-text
+{
+    width: 80%;
+    margin: auto;
+    padding: 15rem 0 10rem 0;
+}
+.about-me-text span
+{
+    font-family:"poppins",sans-serif;
+    font-size: 10rem;
+  font-style: italic;
+    color:gray;
+    letter-spacing: 0.5rem;
+    line-height: 0.9;
+    text-shadow: 0 0 1rem ;
+    position: relative;
+    mix-blend-mode: normal;/* bacause of this propert text is hide inside background*/
+}
+
+@keyframes aboutMetextanimation
+{
+    0%
+    {
+        color: #aaa;0
+    }
+    10%,90%{
+        color:#fff;
+        top:2rem;
+    }
+    100%
+    {
+        color: #aaa;
+        top: 0;
+    }
+}
+.section-2 .main-btn{
+    left:50%;
+    bottom: -5rem;
+    transform: translateX(-50%);
+    top: 200%;
+    
+}
+/* section-3*/
+.section-3
+{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 20rem 0 20rem 0;
+}
+.projects
+{
+    flex-wrap: wrap;/* for placing projects on different line*/
+    padding-bottom: 10rem;/* create bottom of the project*/
+
+}
+.project{
+    width: 45rem;
+    height: 30rem;
+    overflow: hidden; /*images are overlap each other hence to hide alter part of images need to used overflow*/
+   margin:3rem;
+   background-color:black;
+   display:center;/* center the images*/
+   justify-content:center;
+   position: relative;
+   border: 0.2rem solid blue;
+   border-radius: 0.5rem;
+   cursor: pointer;
+   perspective: 20rem;/* in order to keyframe animation apply we have to set perspective property*/
+}
+.project img
+{
+width: 140%;
+object-fit: cover;/* in order to avoid shrinking */
+position:absolute;
+top: 2rem;
+transition:top 4s 0.2s;/* inrder to hover effect smoothly we given time 4s*/
+}
+.project:nth-child(even):hover img /* this keframe animation for all images in project hence project for nth node childe selected*/
+{
+animation:evenimganim 4s 0.2s;
+}
+@keyframes evenimganim
+{
+    0%
+    {
+       
+    }
+    25%
+    {
+       transform: rotateX(2deg) rotateY(-2deg);
+    }
+    50%
+    {
+      transform: rotateX(-2deg) rotateY(2deg);
+    }
+    100%
+    {
+        transform: rotateY();
+    }
+}
+/* big project image*/
+.project-img-wrapper
+{
+    z-index: 1;
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0,0,0,0.9);
+    overflow:hidden scroll;
+    animation:imgwrapperanim 1s forwards;/* forwards makes img 100 display*/
+}
+@keyframes imgwrapperanim
+{
+    0%
+    {
+        height:0;
+    }
+    100%
+    {
+    height: 100%;
+    }
+}
+.project-img
+{
+    width: 100%;
+    border-radius: 0.5rem;
+    padding:7rem 20rem;
+
+}
+.project-img
+{
+
+    width: 100%;
+    border-radius: 0.8rem;
+    padding: 7rem 20rem;
+    transform-origin: top center;
+    animation: imganimation 1s 1s both;
+}
+@keyframes imganimation 
+{
+    0%
+    {
+        transform: scale(0);
+    }
+    100%
+    {
+        transform: scale(1);
+    }
+}
+.project-hide-btn
+{
+    position: fixed;
+    top:5rem;
+    right: 5rem;
+    background-color: transparent;
+    border: none;
+    color:white;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    cursor:pointer;
+     z-index: 10;
+     transform: scale(0);
+     visibility: hidden;
+}
+.change.project-hide-btn
+{
+    transform: scale(1);
+    visibility: visible;
+    transition: trasform 0.5s;
+}
+.project-btn
+{
+    left: 50%;
+    transform: translateX(-50%);
+}
+.section-4
+{
+    position: relative;
+    width: 100%;
+}
+.services-wrapper
+{
+width: 100%;
+flex-direction: column;
+}
+.service
+{
+    width: 70%;
+    margin: 2rem 0;
+    border-bottom: 0.5rem solid gray;
+}
+.service-btn
+{
+    width: 100%;
+    position: relative;
+    display: block;
+    height: 15rem;
+    
+}
+.service-btn span
+{
+    font-family: "poppins",sans-serif;
+    font-weight: bold;
+    color:gray;
+ font-style: italic;
+    font-size: 5rem;
+    position: absolute;
+    right: 0;
+    transition: all 0.5s;
+}
+.service-text
+{
+   
+    color:grey;
+    letter-spacing: 0.1rem;
+    font-size: 5rem;
+    height: 0;/*here paragraph is not visible */
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s;
+}
+.change.service-text /*here paragraph is visible ,tggle() javascript is change from .change.servicetext(paragraph visible) to servicetext(paragraph invisible) onclick */
+{
+    height: 15rem;
+    visibility: visible;
+    opacity: 1;
+    transition: height 0.5s, opacity 0.5s 0.5s;
+}
+.section-5
+{
+  display: flex;
+  position: relative;
+  /* height:100vh;
+  flex-direction: column; */
+  height: 100%;
+  width: 100%;
+
+}
+.form-heading
+{
+    font-family: "poppins",sans-serif;
+    font-size:6rem;
+    font-weight:400;
+    color:blue;
+    letter-spacing: .3rem;
+    margin-bottom: 3rem;
+    transition: opacity 0.3s;
+}
+.contact-form
+{
+    flex-direction: column;
+
+}
+.contact-form-input
+{
+    width: 60rem;
+    padding:0.5rem;
+    margin: 1rem 0;
+    background-color:whitesmoke;
+    opacity: 0.1rem;
+    border:0.1rem solid black;
+    font-size: 1.7rem;
+    font-weight: bold;
+    letter-spacing: .1rem;
+    color: gray;
+    height: 5rem;
+}
+.contact-form-textarea
+{
+    height: 20rem;
+    resize: none;/* message textbox extended but after setting property resize none its fix*/
+}
+.form-submit-btn
+{
+    width:7rem;
+    height:5rem;
+    background-color: honeydew;
+    border:none;
+    align-self:center;
+    font-size: 1.8rem;
+    color: blue;
+}
+/* slide-show*/
+.slideshow
+{
+    display: flex;
+    width: 50rem;
+    margin-top: 10rem;
+    padding: 0.4rem;
+}
+.slideshow-link
+{
+    width: 12%;
+    filter: brightness(0.5);
+    transition: filter 1.5s;/* making icon brighter*/
+}
+.slideshow-link:nth-child(1)
+.slideshow-link:nth-child(5)
+
+{
+    transition: width 0.5s;
+    opacity: 0.5s;
+}
+.slideshow-link:nth-child(3)
+{
+    transition: filter 0.5s;
+}
+.slideshow-link img
+{
+    width: 100%;/* omg takes width 100% of its parents elements*/ 
+    padding: 0 1rem;/* shrink images*/
+}
+.faded-out
+{
+    opacity: 0;
+    width: 0;
+}
+.light{
+    filter:brightness(1.5);
+}
