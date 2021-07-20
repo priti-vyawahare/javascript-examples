@@ -192,7 +192,7 @@ border-right: none;
     width: 100%;
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
-   url(yello.png)center no-repeat;/* linear -gradient makes imge darker*/
+   url(./images/bg.jpg)center no-repeat;/* linear -gradient makes imge darker*/
     background-size: cover;
 }
 /* end of page bg*/
@@ -364,7 +364,7 @@ border-right: none;
     }
 
     .circle-1{
-       background: url("akshaj1.png") center no-repeat;
+       background: url("./images/akshaj1.png") center no-repeat;
        background-size: cover;
        background-clip: content-box;/* border outside circle so set background clip*/
        border: 0.3rem dotted gray;
@@ -372,7 +372,7 @@ border-right: none;
    }
 
    .circle-2{
-    background: url("akshaj2.png") center no-repeat;
+    background: url("./images/akshaj2.png") center no-repeat;
     background-size: cover;
     background-clip: content-box;
     border: 0.3rem dashed gray;
@@ -381,7 +381,7 @@ border-right: none;
 }
 
 .circle-3{
-    background: url("akshaj3.png") center no-repeat;
+    background: url("./images/akshaj3.png") center no-repeat;
     background-size: cover;
     background-clip: content-box;
     border:1rem double gray;
@@ -389,7 +389,7 @@ border-right: none;
 }
 
 .circle-4{
-    background: url("akshaj4.png") center no-repeat;
+    background: url("./images/akshaj4.png") center no-repeat;
     background-size: cover;
     background-clip: content-box;
     border: 0.7rem double gray;
